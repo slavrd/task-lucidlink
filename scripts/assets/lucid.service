@@ -1,0 +1,14 @@
+[Unit]
+Description=Your private filespace in the cloud.
+After=network.target
+
+[Service]
+Type=simple
+User=root
+StandardInput=file:/root/.lucidpass
+ExecStart=/usr/bin/lucid daemon --fs test1.lucid --user testuser
+ExecStop=/usr/bin/lucid exit
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target
